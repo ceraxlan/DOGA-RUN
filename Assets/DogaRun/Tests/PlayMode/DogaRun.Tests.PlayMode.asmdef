@@ -1,0 +1,20 @@
+{
+  "name": "DogaRun.Tests.PlayMode",
+  "rootNamespace": "DogaRun.Tests.PlayMode",
+  "references": [
+    "DogaRun.Core",
+    "DogaRun.Gameplay",
+    "DogaRun.UI",
+    "Unity.TextMeshPro"
+  ],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": false,
+  "defineConstraints": ["UNITY_INCLUDE_TESTS"],
+  "versionDefines": [],
+  "noEngineReferences": false,
+  "optionalUnityReferences": ["TestAssemblies"]
+}

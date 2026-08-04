@@ -1,0 +1,19 @@
+{
+  "name": "DogaRun.UI",
+  "rootNamespace": "DogaRun.UI",
+  "references": [
+    "DogaRun.Core",
+    "DogaRun.Gameplay",
+    "Unity.TextMeshPro",
+    "Unity.InputSystem"
+  ],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}

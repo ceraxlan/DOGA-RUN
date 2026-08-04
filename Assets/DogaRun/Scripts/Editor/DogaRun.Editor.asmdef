@@ -1,0 +1,19 @@
+{
+  "name": "DogaRun.Editor",
+  "rootNamespace": "DogaRun.Editor",
+  "references": [
+    "DogaRun.Core",
+    "DogaRun.Gameplay",
+    "DogaRun.UI",
+    "DogaRun.Services"
+  ],
+  "includePlatforms": ["Editor"],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}
