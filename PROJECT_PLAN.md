@@ -1,6 +1,6 @@
 # Doğa Koşusu proje planı
 
-Durum tarihi: 2026-08-05. Unity 6000.3.21f1 import/compile, otomatik testler, Android development APK ve Windows runtime smoke doğrulaması tamamlandı.
+Durum tarihi: 2026-08-05. Unity 6000.3.21f1 import/compile, otomatik testler, Android development APK, Windows runtime smoke ve PHASE 5 prosedürel Doğa karakteri + SunlitForest görsel alt-kapsamı tamamlandı.
 
 ## PHASE 0 — Repository ve Unity başlangıcı
 
@@ -35,7 +35,7 @@ Durum tarihi: 2026-08-05. Unity 6000.3.21f1 import/compile, otomatik testler, An
 - [x] Game Over
 - [x] Restart
 - [x] 15 EditMode test vakası
-- [x] 8 PlayMode test vakası
+- [x] 11 PlayMode test vakası
 - [x] Android development APK — API 36, IL2CPP, ARM64
 - [x] Windows standalone runtime smoke — çalışma zamanı istisnası yok
 - [ ] Fiziksel Android cihaz smoke testi
@@ -83,6 +83,12 @@ Durum tarihi: 2026-08-05. Unity 6000.3.21f1 import/compile, otomatik testler, An
 
 ## PHASE 5 — Görsel ve ses iyileştirmesi
 
+- [x] Özgün prosedürel Doğa karakter rig'i
+- [x] Koşu/jump/slide/lane/hit prosedürel animasyonları
+- [x] CharacterDefinition renk ve boy yapılandırması
+- [x] Sırt çantası, yüz ve saç hareketi karakter iyileştirmesi
+- [x] SunlitForest prosedürel çevre görsel geçişi
+- [x] Portre kamera kompozisyonu ve düşük maliyetli bitki/yaprak hareketi
 - [ ] Gerçek Doğa modelini bağlamak için import pipeline
 - [ ] Animator Controller
 - [ ] Animal models
@@ -92,7 +98,7 @@ Durum tarihi: 2026-08-05. Unity 6000.3.21f1 import/compile, otomatik testler, An
 - [ ] Audio
 - [ ] Surface footsteps
 - [ ] Mobile quality profiles
-- [ ] Art Bible güncellemesi
+- [x] Art Bible güncellemesi
 
 ## PHASE 6 — Android optimizasyon ve yayın hazırlığı
 

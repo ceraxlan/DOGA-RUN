@@ -49,6 +49,52 @@ namespace DogaRun.Tests.PlayMode
         }
 
         [UnityTest]
+        public IEnumerator ProceduralDoga_BuildsChildFriendlySemanticRig()
+        {
+            var root = new GameObject("DogaVisualTest");
+            var character = root.AddComponent<ProceduralDogaCharacter>();
+            character.Build();
+
+            Assert.That(character.IsBuilt, Is.True);
+            Assert.That(character.PartCount, Is.GreaterThanOrEqualTo(45));
+            Assert.That(character.HeadRoot, Is.Not.Null);
+            Assert.That(character.LeftArmRoot, Is.Not.Null);
+            Assert.That(character.RightArmRoot, Is.Not.Null);
+            Assert.That(character.LeftLegRoot, Is.Not.Null);
+            Assert.That(character.RightLegRoot, Is.Not.Null);
+            Assert.That(root.transform.Find("DogaRig/Head/Sol Mavi İris"), Is.Not.Null);
+            Assert.That(root.transform.Find("DogaRig/Body/Doğa Sırt Çantası/Yaprak Rozeti"), Is.Not.Null);
+
+            Object.Destroy(root);
+            yield return null;
+        }
+
+        [UnityTest]
+        public IEnumerator CharacterAnimation_ProducesRunningLimbMotion()
+        {
+            var root = new GameObject("AnimatedRunner");
+            var controller = root.AddComponent<CharacterController>();
+            controller.height = 1.7f;
+            controller.center = new Vector3(0f, 0.85f, 0f);
+            var runner = root.AddComponent<RunnerController>();
+            runner.Initialize(new GameStateMachine(GameState.Running));
+
+            var visualObject = new GameObject("DogaVisual");
+            visualObject.transform.SetParent(root.transform, false);
+            var character = visualObject.AddComponent<ProceduralDogaCharacter>();
+            character.Build();
+            var animationController = root.AddComponent<CharacterAnimationController>();
+            animationController.Initialize(character, runner, new HitStateMachine());
+            var initialRotation = character.LeftArmRoot.localRotation;
+
+            yield return new WaitForSeconds(0.15f);
+
+            Assert.That(Quaternion.Angle(initialRotation, character.LeftArmRoot.localRotation), Is.GreaterThan(1f));
+            Object.Destroy(root);
+            yield return null;
+        }
+
+        [UnityTest]
         public IEnumerator AnimalObstacle_ConsumesColliderHitOnce()
         {
             var hitMachine = new HitStateMachine();
@@ -133,6 +179,32 @@ namespace DogaRun.Tests.PlayMode
             Assert.That(pool.Capacity, Is.EqualTo(4));
             Assert.That(sequence.ActiveChunkCount, Is.EqualTo(3));
             Object.Destroy(config);
+            Object.Destroy(root);
+            yield return null;
+        }
+
+        [UnityTest]
+        public IEnumerator ProceduralForest_BuildsReadableThreeLaneVisualHierarchy()
+        {
+            var root = new GameObject("ForestVisualTest");
+            var factory = root.AddComponent<ProceduralSunlitForestFactory>();
+            var chunk = factory.CreateTemplate(root.transform, 24f);
+            factory.CreateAmbientLeaves(root.transform);
+
+            Assert.That(chunk.Length, Is.EqualTo(24f));
+            Assert.That(factory.LastVisualPartCount, Is.InRange(70, 110));
+            Assert.That(chunk.transform.Find("WarmForestTrail/Sol Patika"), Is.Not.Null);
+            Assert.That(chunk.transform.Find("WarmForestTrail/Orta Patika"), Is.Not.Null);
+            Assert.That(chunk.transform.Find("WarmForestTrail/Sağ Patika"), Is.Not.Null);
+            Assert.That(chunk.transform.Find("LeafCanopyArch/Kemer Yaprakları"), Is.Not.Null);
+            var foliage = chunk.GetComponent<ForestFoliageAnimator>();
+            Assert.That(foliage, Is.Not.Null);
+            Assert.That(foliage.AnimatedGroupCount, Is.GreaterThanOrEqualTo(8));
+
+            var leafDrift = root.GetComponentInChildren<ForestLeafDrift>();
+            Assert.That(leafDrift, Is.Not.Null);
+            Assert.That(leafDrift.LeafCount, Is.EqualTo(12));
+
             Object.Destroy(root);
             yield return null;
         }

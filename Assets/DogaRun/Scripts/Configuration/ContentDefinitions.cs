@@ -55,18 +55,6 @@ namespace DogaRun.Configuration
         public AnimalBehaviourType Behaviour => behaviour;
     }
 
-    [CreateAssetMenu(menuName = "DogaRun/Character", fileName = "CharacterDefinition")]
-    public sealed class CharacterDefinition : ScriptableObject
-    {
-        [SerializeField] private string characterId = "Doga";
-        [SerializeField] private GameObject visualPrefab;
-        [SerializeField, Min(0.5f)] private float height = 1.65f;
-
-        public string CharacterId => characterId;
-        public GameObject VisualPrefab => visualPrefab;
-        public float Height => height;
-    }
-
     [CreateAssetMenu(menuName = "DogaRun/Audio Configuration", fileName = "AudioConfiguration")]
     public sealed class AudioConfiguration : ScriptableObject
     {

@@ -17,11 +17,10 @@ namespace DogaRun.UI
     public sealed class GameSceneInstaller : MonoBehaviour
     {
         private static readonly Color ForestGreen = new Color(0.18f, 0.48f, 0.25f);
-        private static readonly Color DeepGreen = new Color(0.08f, 0.28f, 0.15f);
-        private static readonly Color DirtBrown = new Color(0.42f, 0.25f, 0.12f);
         private static readonly Color WarmYellow = new Color(1f, 0.76f, 0.2f);
-        private static readonly Color SkyBlue = new Color(0.42f, 0.76f, 0.9f);
+        private static readonly Color SkyBlue = new Color(0.26f, 0.73f, 0.88f);
         private static readonly Color Coral = new Color(0.95f, 0.35f, 0.27f);
+        [SerializeField] private CharacterDefinition characterDefinition;
         private KeyboardInputReader keyboardInput;
         private GameLoopController gameLoop;
 
@@ -74,25 +73,16 @@ namespace DogaRun.UI
             controller.stepOffset = 0.2f;
             controller.skinWidth = 0.04f;
 
-            var visualRoot = new GameObject("DogaVisual_Placeholder").transform;
-            visualRoot.SetParent(runnerObject.transform, false);
-
-            var shirt = CreatePrimitive("Turkuaz Spor Üst", PrimitiveType.Capsule, visualRoot, new Vector3(0f, 0.83f, 0f), new Vector3(0.52f, 0.58f, 0.4f), new Color(0.08f, 0.68f, 0.72f));
-            shirt.transform.localRotation = Quaternion.identity;
-            CreatePrimitive("Kafa", PrimitiveType.Sphere, visualRoot, new Vector3(0f, 1.62f, 0f), Vector3.one * 0.68f, new Color(1f, 0.76f, 0.58f));
-            CreatePrimitive("Sarı Saç", PrimitiveType.Sphere, visualRoot, new Vector3(0f, 1.83f, -0.02f), new Vector3(0.72f, 0.38f, 0.7f), WarmYellow);
-            CreatePrimitive("Sol Saç Buklesi", PrimitiveType.Sphere, visualRoot, new Vector3(-0.28f, 1.62f, 0f), Vector3.one * 0.22f, WarmYellow);
-            CreatePrimitive("Sağ Saç Buklesi", PrimitiveType.Sphere, visualRoot, new Vector3(0.28f, 1.62f, 0f), Vector3.one * 0.22f, WarmYellow);
-            CreatePrimitive("Sol Göz", PrimitiveType.Sphere, visualRoot, new Vector3(-0.13f, 1.68f, 0.31f), Vector3.one * 0.09f, new Color(0.12f, 0.46f, 0.9f));
-            CreatePrimitive("Sağ Göz", PrimitiveType.Sphere, visualRoot, new Vector3(0.13f, 1.68f, 0.31f), Vector3.one * 0.09f, new Color(0.12f, 0.46f, 0.9f));
-            CreatePrimitive("Sol Bacak", PrimitiveType.Capsule, visualRoot, new Vector3(-0.16f, 0.27f, 0f), new Vector3(0.18f, 0.28f, 0.2f), Coral);
-            CreatePrimitive("Sağ Bacak", PrimitiveType.Capsule, visualRoot, new Vector3(0.16f, 0.27f, 0f), new Vector3(0.18f, 0.28f, 0.2f), Coral);
+            var visualObject = new GameObject("DogaVisual_Procedural");
+            visualObject.transform.SetParent(runnerObject.transform, false);
+            var characterView = visualObject.AddComponent<ProceduralDogaCharacter>();
+            characterView.Build(characterDefinition);
 
             var runner = runnerObject.AddComponent<RunnerController>();
             runner.Initialize(stateMachine);
             runner.Configure(2.4f, 2f, 0.75f);
             animationController = runnerObject.AddComponent<CharacterAnimationController>();
-            animationController.Initialize(visualRoot, hitStateMachine);
+            animationController.Initialize(characterView, runner, hitStateMachine);
             return runner;
         }
 
@@ -102,35 +92,39 @@ namespace DogaRun.UI
             cameraObject.tag = "MainCamera";
             cameraObject.transform.SetParent(parent, false);
             var camera = cameraObject.AddComponent<Camera>();
-            camera.fieldOfView = 58f;
+            camera.fieldOfView = 62f;
             camera.nearClipPlane = 0.1f;
             camera.farClipPlane = 160f;
             camera.clearFlags = CameraClearFlags.SolidColor;
             camera.backgroundColor = SkyBlue;
             cameraObject.AddComponent<AudioListener>();
-            cameraObject.AddComponent<RunnerCameraRig>().Initialize(runner);
+            var rig = cameraObject.AddComponent<RunnerCameraRig>();
+            rig.Configure(new Vector3(0f, 3.75f, -6.6f), 0.2f, 0.12f, 6.4f);
+            rig.Initialize(runner);
         }
 
         private static void CreateLighting(Transform parent)
         {
             RenderSettings.ambientMode = UnityEngine.Rendering.AmbientMode.Trilight;
-            RenderSettings.ambientSkyColor = new Color(0.68f, 0.79f, 0.74f);
-            RenderSettings.ambientEquatorColor = new Color(0.44f, 0.57f, 0.42f);
-            RenderSettings.ambientGroundColor = new Color(0.2f, 0.25f, 0.18f);
+            RenderSettings.ambientSkyColor = new Color(0.66f, 0.84f, 0.78f);
+            RenderSettings.ambientEquatorColor = new Color(0.42f, 0.62f, 0.38f);
+            RenderSettings.ambientGroundColor = new Color(0.18f, 0.3f, 0.16f);
+            RenderSettings.ambientIntensity = 1.12f;
             RenderSettings.fog = true;
             RenderSettings.fogMode = FogMode.Linear;
-            RenderSettings.fogColor = new Color(0.56f, 0.72f, 0.66f);
-            RenderSettings.fogStartDistance = 45f;
-            RenderSettings.fogEndDistance = 120f;
+            RenderSettings.fogColor = new Color(0.5f, 0.75f, 0.68f);
+            RenderSettings.fogStartDistance = 38f;
+            RenderSettings.fogEndDistance = 112f;
 
             var lightObject = new GameObject("Warm Sun");
             lightObject.transform.SetParent(parent, false);
             lightObject.transform.rotation = Quaternion.Euler(42f, -28f, 0f);
             var light = lightObject.AddComponent<Light>();
             light.type = LightType.Directional;
-            light.color = new Color(1f, 0.9f, 0.72f);
-            light.intensity = 1.15f;
+            light.color = new Color(1f, 0.88f, 0.66f);
+            light.intensity = 1.25f;
             light.shadows = LightShadows.Soft;
+            light.shadowStrength = 0.72f;
         }
 
         private WorldSequenceController CreateWorld(DifficultyConfig difficulty, GameStateMachine stateMachine, Transform parent)
@@ -138,49 +132,14 @@ namespace DogaRun.UI
             var worldRoot = new GameObject("World").transform;
             worldRoot.SetParent(parent, false);
             var pool = worldRoot.gameObject.AddComponent<WorldChunkPool>();
-            var template = CreateForestChunkTemplate(worldRoot);
-            pool.Initialize(template, 7);
+            var forestFactory = worldRoot.gameObject.AddComponent<ProceduralSunlitForestFactory>();
+            var template = forestFactory.CreateTemplate(worldRoot, 24f);
+            forestFactory.CreateAmbientLeaves(worldRoot);
+            pool.Initialize(template, 6);
             var sequence = worldRoot.gameObject.AddComponent<WorldSequenceController>();
-            sequence.Initialize(pool, difficulty, stateMachine, 6, 8);
+            sequence.Initialize(pool, difficulty, stateMachine, 5, 8);
             worldRoot.gameObject.AddComponent<EnvironmentTransitionController>();
             return sequence;
-        }
-
-        private WorldChunk CreateForestChunkTemplate(Transform parent)
-        {
-            const float chunkLength = 18f;
-            var root = new GameObject("SunlitForestChunk_Template");
-            root.transform.SetParent(parent, false);
-            var chunk = root.AddComponent<WorldChunk>();
-            chunk.Configure(chunkLength);
-
-            var road = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            road.name = "Toprak Yol";
-            road.transform.SetParent(root.transform, false);
-            road.transform.localPosition = new Vector3(0f, -0.16f, chunkLength * 0.5f);
-            road.transform.localScale = new Vector3(7.7f, 0.3f, chunkLength);
-            SetMaterial(road, DirtBrown);
-
-            CreatePrimitive("Sol Çim", PrimitiveType.Cube, root.transform, new Vector3(-5.9f, -0.21f, chunkLength * 0.5f), new Vector3(4f, 0.22f, chunkLength), ForestGreen);
-            CreatePrimitive("Sağ Çim", PrimitiveType.Cube, root.transform, new Vector3(5.9f, -0.21f, chunkLength * 0.5f), new Vector3(4f, 0.22f, chunkLength), ForestGreen);
-            CreatePrimitive("Sol Şerit İzi", PrimitiveType.Cube, root.transform, new Vector3(-1.2f, 0.005f, chunkLength * 0.5f), new Vector3(0.05f, 0.02f, chunkLength), new Color(0.65f, 0.47f, 0.24f));
-            CreatePrimitive("Sağ Şerit İzi", PrimitiveType.Cube, root.transform, new Vector3(1.2f, 0.005f, chunkLength * 0.5f), new Vector3(0.05f, 0.02f, chunkLength), new Color(0.65f, 0.47f, 0.24f));
-
-            for (var index = 0; index < 3; index++)
-            {
-                var z = 2.5f + index * 6f;
-                CreateTree(root.transform, -5.1f - index % 2, z, 1f + index * 0.06f);
-                CreateTree(root.transform, 5.1f + index % 2, z + 2f, 0.94f + index * 0.08f);
-                CreatePrimitive($"Çiçek Sol {index}", PrimitiveType.Sphere, root.transform, new Vector3(-4.1f, 0.16f, z + 1f), Vector3.one * 0.22f, index % 2 == 0 ? WarmYellow : Coral);
-                CreatePrimitive($"Çiçek Sağ {index}", PrimitiveType.Sphere, root.transform, new Vector3(4.2f, 0.16f, z + 4f), Vector3.one * 0.2f, index % 2 == 0 ? Coral : WarmYellow);
-            }
-            return chunk;
-        }
-
-        private static void CreateTree(Transform parent, float x, float z, float scale)
-        {
-            CreatePrimitive("Ağaç Gövdesi", PrimitiveType.Cylinder, parent, new Vector3(x, 1.3f * scale, z), new Vector3(0.42f * scale, 1.3f * scale, 0.42f * scale), new Color(0.36f, 0.2f, 0.09f));
-            CreatePrimitive("Ağaç Tacı", PrimitiveType.Sphere, parent, new Vector3(x, 3.45f * scale, z), new Vector3(2.1f, 2.3f, 2.1f) * scale, DeepGreen);
         }
 
         private AnimalObstacleSpawner CreateObstacles(

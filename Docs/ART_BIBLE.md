@@ -6,11 +6,15 @@ Sıcak, yumuşak kenarlı, stilize 3D animasyon filmi estetiği; canlı fakat yo
 
 ## Doğa karakteri
 
-Yaklaşık üç yaş görünümünde, yaşına uygun oranlarda, küçük ve stilize bir çocuk karakteridir. Sarı hafif kısa/kıvırcık saç, mavi göz, spor ve renkli kıyafet ana işaretlerdir. PHASE 1 modelinin tamamı Unity primitive'lerinden çalışma anında oluşturulan placeholderdır. Renderer/model bağlantısı `CharacterDefinition` üzerinden değiştirilebilir.
+Yaklaşık üç yaş görünümünde, yaşına uygun oranlarda, küçük ve stilize bir çocuk karakteridir. Büyük ve yumuşak yüz formu, sarı kısa/kıvırcık saç, katmanlı mavi gözler, pembe yanaklar, turkuaz spor üst, mercan şort ve sarı ayakkabılar ana işaretlerdir. Mor sırt çantasındaki yeşil yaprak rozeti üçüncü şahıs kamerada özgün ve okunabilir bir işaret oluşturur.
+
+PHASE 5 prosedürel modelinde 49 düşük maliyetli primitive renderer; `Body`, `Head`, `HairRoot`, `BackpackRoot`, sol/sağ kol ve sol/sağ bacak semantik eklemlerine bağlanır. Koşu, saç sekmesi, şerit eğimi, zıplama, kayma ve çocuk dostu çarpışma tepkileri bu eklemler üzerinden çalışır. Boy ve ana renk paleti `CharacterDefinition` içindedir. Bu hiyerarşi üretim modeline geçişte gameplay kodunu değiştirmeden bir prefab/rig adaptörü bağlanabilecek şekilde ayrılmıştır.
 
 ## Çevre
 
-Tek Directional Light, yumuşak gölge, basit düşük poligon formlar, GPU instancing destekli materyaller ve sınırlı partikül kullanılır. Gerçek zamanlı ağır volumetric fog kullanılmaz. PHASE 1; toprak yol, çim şeritler, ağaç primitive'leri ve sıcak gökyüzü rengiyle SunlitForest prototipidir.
+SunlitForest, portre ekranda güçlü derinlik veren üç sıcak toprak patikayı merkezde tutar. Doygun fakat yumuşak yeşil ağaç katmanları çerçeveyi iki yandan sarar; yaprak kemerleri, eğreltiler, çiçekler, mantarlar ve kayalar ritmik olarak tekrar eder. Şeritler ince yaprak bordürleri ve açık/koyu yüzey farkıyla okunur; ray, para, özgün karakter veya başka bir oyuna ait tanınabilir UI/öğe kullanılmaz.
+
+Tek Directional Light, yumuşak gölge, basit düşük poligon formlar ve GPU instancing destekli paylaşılan materyaller kullanılır. Her havuzlanan parçada tek `ForestFoliageAnimator` birden çok bitki grubunu sallar; ortamda yalnızca 12 yaprak tek `ForestLeafDrift` tarafından hareket ettirilir. Particle System ve gerçek zamanlı ağır volumetric fog kullanılmaz.
 
 ## Asset kabulü
 
