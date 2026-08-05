@@ -21,6 +21,12 @@
 
 Çıktı `Builds/Android/DogaRun-development.apk` konumuna yazılır.
 
+Bu makinedeki doğrulanmış kullanıcı-dizini Editor kurulumu için:
+
+```powershell
+./scripts/build-android-development.ps1 -UnityPath "$env:LOCALAPPDATA\Unity\Hub\Editor\6000.3.21f1\Editor\Unity.exe"
+```
+
 ## Release
 
 `DOGARUN_KEYSTORE_PATH`, `DOGARUN_KEYSTORE_PASSWORD`, `DOGARUN_KEY_ALIAS`, `DOGARUN_KEY_ALIAS_PASSWORD` ortam değişkenlerini güvenli şekilde tanımlayıp:

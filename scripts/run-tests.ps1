@@ -21,8 +21,11 @@ New-Item -ItemType Directory -Force -Path $ResultRoot | Out-Null
 function Invoke-UnityTests([string]$Platform) {
     $result = Join-Path $ResultRoot "$Platform-results.xml"
     $log = Join-Path $ResultRoot "$Platform.log"
-    & $UnityPath -batchmode -nographics -projectPath $ProjectRoot -runTests -testPlatform $Platform -testResults $result -logFile $log
-    if ($LASTEXITCODE -ne 0) { throw "$Platform testleri başarısız. ExitCode=$LASTEXITCODE, log=$log" }
+    $assemblyName = "DogaRun.Tests.$Platform"
+    $arguments = "-batchmode -nographics -projectPath `"$ProjectRoot`" -runTests -testPlatform $Platform -assemblyNames $assemblyName -testResults `"$result`" -logFile `"$log`""
+    $process = Start-Process -FilePath $UnityPath -ArgumentList $arguments -WindowStyle Hidden -PassThru
+    $process.WaitForExit()
+    if ($process.ExitCode -ne 0) { throw "$Platform testleri başarısız. ExitCode=$($process.ExitCode), log=$log" }
     Write-Host "[OK] $Platform -> $result"
 }
 

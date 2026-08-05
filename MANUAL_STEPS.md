@@ -1,35 +1,46 @@
-# Manuel adımlar
+# Kalan manuel adımlar
 
-## 1. Unity ve Android desteği
+## 1. Bu makinedeki Unity kurulumu
 
-Bu makinede Unity Hub ve Unity Editor tespit edilemedi.
+Unity 6000.3.21f1 ve Android araçları kullanıcı dizinine kuruldu:
 
-1. Unity Hub'ı resmi Unity sitesinden kurun.
-2. Unity Hub üzerinden **Unity 6000.3.21f1** kurun.
-3. Kurulum modüllerinde **Android Build Support**, **Android SDK & NDK Tools** ve **OpenJDK** seçeneklerini işaretleyin.
-4. Unity Hub'da `DOGA-RUN` klasörünü proje olarak ekleyip açın.
-5. Paket çözümleme bittikten sonra Console'da hata olmadığını doğrulayın.
-6. `Assets/DogaRun/Scenes/Game.unity` sahnesini açıp Play ile smoke test yapın.
-7. `./scripts/run-tests.ps1` çalıştırın. Windows execution policy engellerse yalnızca bu çağrı için:
-
-```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\run-tests.ps1
+```text
+C:\Users\cerax\AppData\Local\Unity\Hub\Editor\6000.3.21f1
 ```
 
-Unity 6000.3.21f1 resmi yayın sayfası: https://unity.com/releases/editor/whats-new/6000.3.21f1
+Test ve build scriptleri varsayılan `Program Files` yolunun dışında kalan bu kuruluma `-UnityPath` ile erişebilir:
 
-## 2. GitHub private repository
+```powershell
+$unity = "$env:LOCALAPPDATA\Unity\Hub\Editor\6000.3.21f1\Editor\Unity.exe"
+./scripts/run-tests.ps1 -UnityPath $unity
+./scripts/build-android-development.ps1 -UnityPath $unity
+```
 
-GitHub CLI kurulu fakat `ceraxlan` hesabının token'ı geçersiz. Yeniden oturum açtıktan sonra repository kökünde:
+## 2. GitHub yüklemesi
+
+`origin` doğru depoya bağlıdır: `https://github.com/ceraxlan/DOGA-RUN.git`. Yerel GitHub CLI token'ı geçersiz olduğu için `ceraxlan` hesabıyla cihaz yetkilendirmesi tamamlanmalıdır:
 
 ```powershell
 gh auth login -h github.com
-gh repo create DOGA-RUN --private --source . --remote origin --push
+gh auth setup-git
+git push -u origin main
 ```
 
-Var olan bir `origin` görülürse komutu çalıştırmadan önce remote sahibini ve URL'yi doğrulayın; bu proje otomatik olarak hiçbir remote'u değiştirmez.
+Yeni repository oluşturmayın; hedef repository zaten vardır.
 
-## 3. Android release imzalama
+## 3. Fiziksel Android cihaz smoke testi
+
+USB debugging açık cihazı bağladıktan sonra Unity ile gelen ADB kullanılarak:
+
+```powershell
+$adb = "$env:LOCALAPPDATA\Unity\Hub\Editor\6000.3.21f1\Editor\Data\PlaybackEngines\AndroidPlayer\SDK\platform-tools\adb.exe"
+& $adb devices -l
+& $adb install -r .\Builds\Android\DogaRun-development.apk
+```
+
+Oyunda şerit değiştirme, jump, slide, pause, üç çarpışma, game over ve restart akışlarını cihazda kontrol edin.
+
+## 4. Android release imzalama
 
 Gerçek değerleri yalnızca yerel terminal/CI secret store içinde tanımlayın:
 
@@ -38,11 +49,11 @@ $env:DOGARUN_KEYSTORE_PATH = 'C:\secure\dogarun-upload.jks'
 $env:DOGARUN_KEYSTORE_PASSWORD = '...'
 $env:DOGARUN_KEY_ALIAS = '...'
 $env:DOGARUN_KEY_ALIAS_PASSWORD = '...'
-./scripts/build-android-release.ps1
+./scripts/build-android-release.ps1 -UnityPath $unity
 ```
 
 Keystore'u, şifreleri veya `signing.properties` dosyasını repository'ye eklemeyin.
 
-## 4. UGS (PHASE 4)
+## 5. UGS (PHASE 4)
 
 UGS paketleri ve gerçek servis adaptörleri kasıtlı olarak PHASE 4'e bırakılmıştır. Şu anki proje yerel/misafir servis sözleşmeleri ve mock genişleme noktalarıyla servis yapılandırması olmadan açılabilir.

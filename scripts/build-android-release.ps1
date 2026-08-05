@@ -21,6 +21,8 @@ if (-not (Test-Path -LiteralPath $UnityPath)) { throw "Unity Editor bulunamadı:
 
 $LogPath = Join-Path $ProjectRoot 'Logs\android-release.log'
 New-Item -ItemType Directory -Force -Path (Split-Path -Parent $LogPath) | Out-Null
-& $UnityPath -batchmode -quit -projectPath $ProjectRoot -executeMethod DogaRun.Editor.AndroidBuildCommand.BuildRelease -logFile $LogPath
-if ($LASTEXITCODE -ne 0) { throw "Release build başarısız. ExitCode=$LASTEXITCODE, log=$LogPath" }
+$arguments = "-batchmode -quit -projectPath `"$ProjectRoot`" -executeMethod DogaRun.Editor.AndroidBuildCommand.BuildRelease -logFile `"$LogPath`""
+$process = Start-Process -FilePath $UnityPath -ArgumentList $arguments -WindowStyle Hidden -PassThru
+$process.WaitForExit()
+if ($process.ExitCode -ne 0) { throw "Release build başarısız. ExitCode=$($process.ExitCode), log=$LogPath" }
 Write-Host '[OK] Builds/Android/DogaRun-release.aab'

@@ -313,7 +313,7 @@ namespace DogaRun.UI
             text.fontSize = size;
             text.alignment = alignment;
             text.color = color;
-            text.enableWordWrapping = false;
+            text.textWrappingMode = TextWrappingModes.NoWrap;
             var font = TMP_Settings.defaultFontAsset ?? Resources.Load<TMP_FontAsset>("Fonts & Materials/LiberationSans SDF");
             if (font != null) text.font = font;
             return text;

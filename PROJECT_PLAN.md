@@ -1,6 +1,6 @@
 # Doğa Koşusu proje planı
 
-Durum tarihi: 2026-08-04. İşaretlenen maddeler kaynak kod/konfigürasyon olarak hazırdır. Unity Editor bulunmadığı için Editor importu ve cihaz doğrulaması ayrıca beklemektedir.
+Durum tarihi: 2026-08-05. Unity 6000.3.21f1 import/compile, otomatik testler ve Android development APK doğrulaması tamamlandı.
 
 ## PHASE 0 — Repository ve Unity başlangıcı
 
@@ -8,12 +8,13 @@ Durum tarihi: 2026-08-04. İşaretlenen maddeler kaynak kod/konfigürasyon olara
 - [x] DOGA-RUN klasörü
 - [x] Git init
 - [x] Git LFS yapılandırması
-- [ ] Private GitHub repository — `gh` token geçersiz; manuel adım var
+- [x] GitHub repository bağlantısı — `https://github.com/ceraxlan/DOGA-RUN.git`
 - [x] Unity URP proje iskeleti
 - [x] Klasör yapısı
 - [x] AGENTS.md
 - [x] Dokümantasyon başlangıcı
-- [ ] Unity Editor import/compile doğrulaması — Editor kurulu değil
+- [x] Unity 6000.3.21f1 Editor import/compile doğrulaması
+- [ ] GitHub push — yerel `gh` oturumu yeniden yetkilendirilmeli
 
 ## PHASE 1 — Oynanabilir dikey dilim
 
@@ -33,9 +34,10 @@ Durum tarihi: 2026-08-04. İşaretlenen maddeler kaynak kod/konfigürasyon olara
 - [x] HUD
 - [x] Game Over
 - [x] Restart
-- [x] Temel test kaynakları
-- [ ] EditMode/PlayMode test yürütmesi — Editor kurulu değil
-- [ ] Android cihaz smoke testi
+- [x] 15 EditMode test vakası
+- [x] 8 PlayMode test vakası
+- [x] Android development APK — API 36, IL2CPP, ARM64
+- [ ] Fiziksel Android cihaz smoke testi
 
 ## PHASE 2 — Tam dünya döngüsü
 
@@ -93,9 +95,9 @@ Durum tarihi: 2026-08-04. İşaretlenen maddeler kaynak kod/konfigürasyon olara
 
 ## PHASE 6 — Android optimizasyon ve yayın hazırlığı
 
-- [ ] Android AAB
-- [ ] API 36
-- [ ] IL2CPP ARM64
+- [ ] İmzalı Android AAB
+- [x] API 36
+- [x] IL2CPP ARM64
 - [ ] Keystore environment configuration
 - [ ] Memory profiling
 - [ ] CPU/GPU profiling

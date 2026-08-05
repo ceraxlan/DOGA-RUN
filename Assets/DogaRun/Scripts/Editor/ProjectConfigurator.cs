@@ -106,7 +106,7 @@ namespace DogaRun.Editor
             EnsureAsset<WorldSegmentDefinition>(baseFolder + "/Environments/SunlitForest.asset");
             EnsureAsset<WorldSequenceDefinition>(baseFolder + "/Environments/WorldSequence.asset");
             EnsureAsset<AnimalObstacleDefinition>(baseFolder + "/Obstacles/DogPlaceholder.asset");
-            EnsureAsset<AudioConfiguration>(baseFolder + "/AudioConfiguration.asset");
+            EnsureAsset<DogaRun.Configuration.AudioConfiguration>(baseFolder + "/AudioConfiguration.asset");
             EnsureAsset<GameBalanceConfiguration>(baseFolder + "/GameBalanceConfiguration.asset");
         }
 
