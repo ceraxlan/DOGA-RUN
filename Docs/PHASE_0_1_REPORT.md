@@ -50,5 +50,4 @@ Tarih: 2026-08-05
 ## Kalan manuel adımlar
 
 1. USB debugging açık fiziksel Android cihazda APK smoke testi yapılmalı.
-2. GitHub CLI `ceraxlan` hesabıyla yeniden yetkilendirilmeli ve yerel commit `origin` deposuna push edilmelidir.
-3. Release AAB için keystore ortam değişkenleri sağlanmalı; development debug anahtarı yayın için kullanılmamalıdır.
+2. Release AAB için keystore ortam değişkenleri sağlanmalı; development debug anahtarı yayın için kullanılmamalıdır.

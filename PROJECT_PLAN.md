@@ -14,7 +14,7 @@ Durum tarihi: 2026-08-05. Unity 6000.3.21f1 import/compile, otomatik testler, An
 - [x] AGENTS.md
 - [x] Dokümantasyon başlangıcı
 - [x] Unity 6000.3.21f1 Editor import/compile doğrulaması
-- [ ] GitHub push — yerel `gh` oturumu yeniden yetkilendirilmeli
+- [x] GitHub push — `main` dalı `https://github.com/ceraxlan/DOGA-RUN.git` deposuna yüklendi
 
 ## PHASE 1 — Oynanabilir dikey dilim
 

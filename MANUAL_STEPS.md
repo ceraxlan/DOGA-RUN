@@ -18,13 +18,11 @@ $unity = "$env:LOCALAPPDATA\Unity\Hub\Editor\6000.3.21f1\Editor\Unity.exe"
 
 Windows smoke doğrulaması için üretilen `Builds/Windows/DogaRun.exe` doğrudan çalıştırılabilir. Bu çıktı yalnızca yerel doğrulama içindir ve `Builds/` kuralıyla Git dışında tutulur.
 
-## 2. GitHub yüklemesi
+## 2. GitHub durumu
 
-`origin` doğru depoya bağlıdır: `https://github.com/ceraxlan/DOGA-RUN.git`. Yerel GitHub CLI token'ı geçersiz olduğu için `ceraxlan` hesabıyla cihaz yetkilendirmesi tamamlanmalıdır:
+`main` dalı `https://github.com/ceraxlan/DOGA-RUN.git` deposuna yüklenmiştir. Sonraki değişiklikler için mevcut `ceraxlan` GitHub CLI oturumu kullanılabilir:
 
 ```powershell
-gh auth login -h github.com
-gh auth setup-git
 git push -u origin main
 ```
 
