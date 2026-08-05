@@ -26,7 +26,7 @@ Referans görsel yalnızca portre derinliği, sıcak yol, doygun yumuşak renkle
 - PlayMode: 11/11 geçti; üç patika, yaprak kemeri, bitki grupları ve 12 ortam yaprağı otomatik olarak doğrulandı.
 - Windows standalone build ve Direct3D 11 runtime smoke: başarılı; exception/crash yok.
 - Android development APK: başarılı; IL2CPP, ARM64, API 36 ve APK Signature Scheme v2.
-- APK SHA-256: `0DB92FFA0C58B5F2525028EFEF9C4A819C8DC1DAEBE016166EA3A1F556532F82`.
+- APK SHA-256: `61281BFD0FA2E2BB5994FC90F178B8AE13A87F9A93383FC8AFD072023E6C1A5A`.
 
 ## Sonraki çevre adımları
 

@@ -36,8 +36,8 @@ Tarih: 2026-08-05
 - Toplam: **26/26** test vakası geçti; failed/skipped yok.
 - Android development APK: başarılı.
   - Çıktı: `Builds/Android/DogaRun-development.apk`
-  - Boyut: 127,467,781 byte (121.56 MiB)
-  - SHA-256: `0DB92FFA0C58B5F2525028EFEF9C4A819C8DC1DAEBE016166EA3A1F556532F82`
+  - Boyut: 127,467,188 byte (121.56 MiB)
+  - SHA-256: `61281BFD0FA2E2BB5994FC90F178B8AE13A87F9A93383FC8AFD072023E6C1A5A`
   - Package/version: `org.ceraxlan.dogarun`, `0.1.0 (1)`
   - min/target/compile SDK: 26/36/36
   - Native ABI: `arm64-v8a`
