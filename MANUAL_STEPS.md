@@ -16,6 +16,8 @@ $unity = "$env:LOCALAPPDATA\Unity\Hub\Editor\6000.3.21f1\Editor\Unity.exe"
 ./scripts/build-android-development.ps1 -UnityPath $unity
 ```
 
+Windows smoke doğrulaması için üretilen `Builds/Windows/DogaRun.exe` doğrudan çalıştırılabilir. Bu çıktı yalnızca yerel doğrulama içindir ve `Builds/` kuralıyla Git dışında tutulur.
+
 ## 2. GitHub yüklemesi
 
 `origin` doğru depoya bağlıdır: `https://github.com/ceraxlan/DOGA-RUN.git`. Yerel GitHub CLI token'ı geçersiz olduğu için `ceraxlan` hesabıyla cihaz yetkilendirmesi tamamlanmalıdır:

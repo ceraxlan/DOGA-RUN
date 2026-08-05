@@ -23,6 +23,7 @@ Tarih: 2026-08-05
 - `TagManager.asset` içindeki Unity YAML parser'ının kabul etmediği boş layer değerleri açık boş string olarak düzeltildi.
 - `AudioConfiguration` tipinin Unity 6 ile oluşan ad çakışması tam namespace kullanılarak giderildi.
 - TextMeshPro wrapping ayarı Unity 6 API'sine taşındı.
+- TextMeshPro temel kaynakları projeye eklendi; standalone build'de `TMP Settings` ve varsayılan fontun eksik kalması giderildi.
 - Test ve Android build PowerShell scriptleri Unity ana prosesinin gerçek çıkış kodunu bekleyecek şekilde düzeltildi.
 - Platform başına doğru test assembly filtresi eklendi.
 - Unity Editor'ı doğru sahnede Play Mode'a alan `DogaRun/Play Vertical Slice` komutu eklendi.
@@ -35,12 +36,16 @@ Tarih: 2026-08-05
 - Toplam: **23/23** test vakası geçti; failed/skipped yok.
 - Android development APK: başarılı.
   - Çıktı: `Builds/Android/DogaRun-development.apk`
-  - Boyut: 69.18 MB
-  - SHA-256: `D8DEBE9F90D787710AED8FA473D011D0C408E41A917D30A57FEC9D58C200DA45`
+  - Boyut: 121.49 MB
+  - SHA-256: `9653B730BF60110F2C3FE273012B072A201212F7BFC9206AA581AC50DB7F3409`
   - Package/version: `org.ceraxlan.dogarun`, `0.1.0 (1)`
   - min/target/compile SDK: 26/36/36
   - Native ABI: `arm64-v8a`
   - APK Signature Scheme v2 doğrulaması: başarılı
+- Windows standalone build: başarılı.
+  - Çıktı: `Builds/Windows/DogaRun.exe`
+  - Direct3D 11 ile runtime smoke: başarılı
+  - Player günlüğü: `NullReferenceException`, `MissingReferenceException` ve crash yok
 
 ## Kalan manuel adımlar
 

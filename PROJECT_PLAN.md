@@ -1,6 +1,6 @@
 # Doğa Koşusu proje planı
 
-Durum tarihi: 2026-08-05. Unity 6000.3.21f1 import/compile, otomatik testler ve Android development APK doğrulaması tamamlandı.
+Durum tarihi: 2026-08-05. Unity 6000.3.21f1 import/compile, otomatik testler, Android development APK ve Windows runtime smoke doğrulaması tamamlandı.
 
 ## PHASE 0 — Repository ve Unity başlangıcı
 
@@ -37,6 +37,7 @@ Durum tarihi: 2026-08-05. Unity 6000.3.21f1 import/compile, otomatik testler ve 
 - [x] 15 EditMode test vakası
 - [x] 8 PlayMode test vakası
 - [x] Android development APK — API 36, IL2CPP, ARM64
+- [x] Windows standalone runtime smoke — çalışma zamanı istisnası yok
 - [ ] Fiziksel Android cihaz smoke testi
 
 ## PHASE 2 — Tam dünya döngüsü
