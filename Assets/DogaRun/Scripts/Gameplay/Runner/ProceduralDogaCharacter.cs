@@ -19,6 +19,8 @@ namespace DogaRun.Gameplay.Runner
 
         public Transform BodyRoot { get; private set; }
         public Transform HeadRoot { get; private set; }
+        public Transform HairRoot { get; private set; }
+        public Transform BackpackRoot { get; private set; }
         public Transform LeftArmRoot { get; private set; }
         public Transform RightArmRoot { get; private set; }
         public Transform LeftLegRoot { get; private set; }
@@ -40,6 +42,7 @@ namespace DogaRun.Gameplay.Runner
             var dark = CreateMaterial("Doga_Dark", new Color(0.055f, 0.075f, 0.09f), 0.45f);
             var blush = CreateMaterial("Doga_Blush", new Color(1f, 0.42f, 0.46f), 0.22f);
             var leaf = CreateMaterial("Doga_Leaf", new Color(0.38f, 0.72f, 0.27f), 0.18f);
+            var backpack = CreateMaterial("Doga_Backpack", new Color(0.32f, 0.22f, 0.55f), 0.2f);
 
             var rigRoot = CreateJoint("DogaRig", transform, Vector3.zero);
             var height = definition == null ? 1.65f : definition.Height;
@@ -50,9 +53,16 @@ namespace DogaRun.Gameplay.Runner
             CreatePart("Mercan Şort", PrimitiveType.Sphere, BodyRoot, new Vector3(0f, -0.05f, 0f), new Vector3(0.57f, 0.25f, 0.42f), Vector3.zero, accent);
             CreatePart("Sarı Bel Şeridi", PrimitiveType.Cylinder, BodyRoot, new Vector3(0f, 0.02f, 0f), new Vector3(0.3f, 0.035f, 0.22f), Vector3.zero, shoes);
 
-            // The small leaf badge is visible from the third-person camera and gives Doğa an original silhouette.
-            CreatePart("Yaprak Rozeti", PrimitiveType.Sphere, BodyRoot, new Vector3(0f, 0.25f, -0.225f), new Vector3(0.15f, 0.25f, 0.035f), new Vector3(0f, 0f, -28f), leaf);
-            CreatePart("Yaprak Damarı", PrimitiveType.Cube, BodyRoot, new Vector3(0f, 0.25f, -0.248f), new Vector3(0.025f, 0.18f, 0.018f), new Vector3(0f, 0f, -28f), white);
+            BackpackRoot = CreateJoint("Doğa Sırt Çantası", BodyRoot, Vector3.zero);
+            CreatePart("Mor Çanta Gövdesi", PrimitiveType.Sphere, BackpackRoot, new Vector3(0f, 0.2f, -0.27f), new Vector3(0.46f, 0.5f, 0.24f), Vector3.zero, backpack);
+            CreatePart("Çanta Üst Kapağı", PrimitiveType.Sphere, BackpackRoot, new Vector3(0f, 0.39f, -0.385f), new Vector3(0.36f, 0.16f, 0.045f), Vector3.zero, accent);
+            CreatePart("Çanta Ön Cebi", PrimitiveType.Sphere, BackpackRoot, new Vector3(0f, 0.09f, -0.4f), new Vector3(0.29f, 0.22f, 0.05f), Vector3.zero, shoes);
+            CreatePart("Sol Çanta Askısı", PrimitiveType.Cube, BackpackRoot, new Vector3(-0.245f, 0.24f, -0.19f), new Vector3(0.055f, 0.45f, 0.055f), new Vector3(0f, 0f, -10f), backpack);
+            CreatePart("Sağ Çanta Askısı", PrimitiveType.Cube, BackpackRoot, new Vector3(0.245f, 0.24f, -0.19f), new Vector3(0.055f, 0.45f, 0.055f), new Vector3(0f, 0f, 10f), backpack);
+
+            // The leaf badge is readable from the third-person camera and belongs only to Doğa Koşusu.
+            CreatePart("Yaprak Rozeti", PrimitiveType.Sphere, BackpackRoot, new Vector3(0f, 0.21f, -0.425f), new Vector3(0.15f, 0.25f, 0.035f), new Vector3(0f, 0f, -28f), leaf);
+            CreatePart("Yaprak Damarı", PrimitiveType.Cube, BackpackRoot, new Vector3(0f, 0.21f, -0.448f), new Vector3(0.025f, 0.18f, 0.018f), new Vector3(0f, 0f, -28f), white);
 
             HeadRoot = CreateJoint("Head", rigRoot, new Vector3(0f, 1.18f, 0f));
             CreatePart("Kafa", PrimitiveType.Sphere, HeadRoot, new Vector3(0f, 0.28f, 0f), new Vector3(0.61f, 0.67f, 0.59f), Vector3.zero, skin);
@@ -60,7 +70,8 @@ namespace DogaRun.Gameplay.Runner
             CreatePart("Sağ Kulak", PrimitiveType.Sphere, HeadRoot, new Vector3(0.31f, 0.29f, 0f), new Vector3(0.12f, 0.17f, 0.09f), Vector3.zero, skin);
 
             BuildFace(HeadRoot, skin, eyes, white, dark, blush);
-            BuildHair(HeadRoot, hair);
+            HairRoot = CreateJoint("Hair", HeadRoot, Vector3.zero);
+            BuildHair(HairRoot, hair);
 
             LeftArmRoot = BuildArm("Sol Kol", BodyRoot, -1f, skin, shirt);
             RightArmRoot = BuildArm("Sağ Kol", BodyRoot, 1f, skin, shirt);
@@ -75,6 +86,7 @@ namespace DogaRun.Gameplay.Runner
         {
             if (BodyRoot != null) BodyRoot.localRotation = Quaternion.identity;
             if (HeadRoot != null) HeadRoot.localRotation = Quaternion.identity;
+            if (HairRoot != null) HairRoot.localRotation = Quaternion.identity;
             if (LeftArmRoot != null) LeftArmRoot.localRotation = Quaternion.Euler(0f, 0f, -8f);
             if (RightArmRoot != null) RightArmRoot.localRotation = Quaternion.Euler(0f, 0f, 8f);
             if (LeftLegRoot != null) LeftLegRoot.localRotation = Quaternion.identity;
@@ -98,6 +110,8 @@ namespace DogaRun.Gameplay.Runner
             CreatePart("Sağ Mavi İris", PrimitiveType.Sphere, head, new Vector3(0.135f, 0.32f, 0.334f), new Vector3(0.082f, 0.096f, 0.038f), Vector3.zero, eyes);
             CreatePart("Sol Göz Bebeği", PrimitiveType.Sphere, head, new Vector3(-0.135f, 0.32f, 0.357f), new Vector3(0.036f, 0.05f, 0.02f), Vector3.zero, dark);
             CreatePart("Sağ Göz Bebeği", PrimitiveType.Sphere, head, new Vector3(0.135f, 0.32f, 0.357f), new Vector3(0.036f, 0.05f, 0.02f), Vector3.zero, dark);
+            CreatePart("Sol Kaş", PrimitiveType.Sphere, head, new Vector3(-0.14f, 0.435f, 0.325f), new Vector3(0.14f, 0.035f, 0.025f), new Vector3(0f, 0f, -7f), dark);
+            CreatePart("Sağ Kaş", PrimitiveType.Sphere, head, new Vector3(0.14f, 0.435f, 0.325f), new Vector3(0.14f, 0.035f, 0.025f), new Vector3(0f, 0f, 7f), dark);
             CreatePart("Burun", PrimitiveType.Sphere, head, new Vector3(0f, 0.22f, 0.325f), new Vector3(0.075f, 0.07f, 0.065f), Vector3.zero, skin);
             CreatePart("Gülümseme", PrimitiveType.Sphere, head, new Vector3(0f, 0.11f, 0.325f), new Vector3(0.13f, 0.035f, 0.027f), Vector3.zero, blush);
             CreatePart("Sol Yanak", PrimitiveType.Sphere, head, new Vector3(-0.225f, 0.18f, 0.285f), new Vector3(0.095f, 0.055f, 0.025f), Vector3.zero, blush);

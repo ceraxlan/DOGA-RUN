@@ -24,7 +24,7 @@ Bir gesture yalnızca bir komut üretir. 70 pikselden kısa dokunuşlar filtrele
 
 `floor(distanceMeters * difficultyScoreMultiplier) + completedLoopCount * 500`
 
-PHASE 1 tek SunlitForest placeholder setini kullanır. Tam sekiz çevre teması, geçişleri ve hız döngüsü PHASE 2 kapsamındadır; veri sınıfları bu genişlemeye hazırdır.
+PHASE 1 tek prosedürel SunlitForest setini kullanır. Tam sekiz çevre teması, geçişleri ve hız döngüsü PHASE 2 kapsamındadır; veri sınıfları bu genişlemeye hazırdır.
 
 ## Çocuk güvenliği
 

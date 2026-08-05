@@ -5,8 +5,8 @@ Tarih: 2026-08-05
 ## Uygulanan kapsam
 
 - Çocuk oranlı ve fotogerçekçi olmayan özgün prosedürel Doğa karakteri.
-- Sarı kısa/kıvırcık saç, katmanlı mavi göz, pembe yanak, renkli spor kıyafet ve yaprak rozeti.
-- `Body`, `Head`, kol ve bacaklardan oluşan üretim modeline uyarlanabilir semantik rig.
+- Sarı kısa/kıvırcık saç, katmanlı mavi göz, pembe yanak, renkli spor kıyafet, mor sırt çantası ve yaprak rozeti.
+- 49 görsel parçalı `Body`, `Head`, `HairRoot`, `BackpackRoot`, kol ve bacaklardan oluşan üretim modeline uyarlanabilir semantik rig.
 - Koşu döngüsü, yatay şerit eğimi, jump, slide, ilk düşüp-kalkma, ikinci tökezleme ve final düşüşü.
 - Recovery sırasında düşük maliyetli renderer blink geri bildirimi.
 - Boy ve altı temel rengin `CharacterDefinition` üzerinden ayarlanması.
@@ -21,7 +21,7 @@ Tarih: 2026-08-05
 ## Doğrulama
 
 - EditMode: 15/15 geçti.
-- PlayMode: 10/10 geçti; prosedürel rig ve koşu uzuv hareketi için iki yeni test dahil.
+- PlayMode: 11/11 geçti; prosedürel rig, koşu uzuv hareketi ve SunlitForest görsel hiyerarşisi testleri dahil.
 - Windows standalone build: başarılı.
 - 18 saniyelik Windows runtime smoke: süreç çalışır/yanıt verir, exception ve crash yok.
 - Android development APK: başarılı; IL2CPP, ARM64, API 36 ve APK Signature Scheme v2.

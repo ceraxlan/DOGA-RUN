@@ -6,7 +6,7 @@
 
 EditMode kapsamı: zorluk değerleri, lane sınırları, skor, hit geçişleri, üçüncü hit game over, dünya sırası/döngüsü, hız çarpanı, top-five ve duplicate RunId, süre biçimi.
 
-PlayMode kapsamı: lane hareketleri/sınırlar, jump, slide, obstacle tek-hit, recovery ve final hit, game over görünümü, restart sıfırlama, chunk recycling, pause sırasında süre.
+PlayMode kapsamı: lane hareketleri/sınırlar, jump, slide, obstacle tek-hit, recovery ve final hit, game over görünümü, restart sıfırlama, chunk recycling, pause sırasında süre, prosedürel karakter rig/koşu hareketi ve SunlitForest görsel hiyerarşisi.
 
 ## Manuel smoke test
 
@@ -19,4 +19,4 @@ PlayMode kapsamı: lane hareketleri/sınırlar, jump, slide, obstacle tek-hit, r
 
 ## Mevcut doğrulama durumu
 
-Unity Editor tespit edilmediği için 2026-08-04 tarihinde test assembly'leri çalıştırılamadı. Bu durum test başarısı olarak raporlanmaz.
+2026-08-05 tarihinde Unity 6000.3.21f1 ile EditMode **15/15**, PlayMode **11/11** geçti; failed/skipped yok. Windows standalone runtime smoke günlüğünde exception/crash bulunmadı. Android ARM64 development APK başarıyla üretildi ve APK Signature Scheme v2 ile doğrulandı.

@@ -112,6 +112,7 @@ namespace DogaRun.Gameplay.Runner
             visualRoot.localRotation = Quaternion.Euler(secondary * 1.2f, 0f, laneLean);
             characterView.BodyRoot.localRotation = Quaternion.Euler(secondary * 2.5f, 0f, -laneLean * 0.18f);
             characterView.HeadRoot.localRotation = Quaternion.Euler(-secondary * 1.8f, 0f, -laneLean * 0.22f);
+            characterView.HairRoot.localRotation = Quaternion.Euler(-secondary * 2.6f, 0f, secondary * 1.8f);
             characterView.LeftArmRoot.localRotation = Quaternion.Euler(swing, 0f, -8f);
             characterView.RightArmRoot.localRotation = Quaternion.Euler(-swing, 0f, 8f);
             characterView.LeftLegRoot.localRotation = Quaternion.Euler(-swing * 0.72f, 0f, 0f);
@@ -125,6 +126,7 @@ namespace DogaRun.Gameplay.Runner
             visualRoot.localRotation = Quaternion.Euler(-4f, 0f, laneLean);
             characterView.BodyRoot.localRotation = Quaternion.Euler(-6f, 0f, 0f);
             characterView.HeadRoot.localRotation = Quaternion.Euler(5f, 0f, 0f);
+            characterView.HairRoot.localRotation = Quaternion.Euler(-7f + airPulse * 0.25f, 0f, 0f);
             characterView.LeftArmRoot.localRotation = Quaternion.Euler(-42f + airPulse, 0f, -18f);
             characterView.RightArmRoot.localRotation = Quaternion.Euler(-42f - airPulse, 0f, 18f);
             characterView.LeftLegRoot.localRotation = Quaternion.Euler(24f, 0f, -5f);
@@ -137,6 +139,7 @@ namespace DogaRun.Gameplay.Runner
             visualRoot.localRotation = Quaternion.Euler(42f, 0f, laneLean * 0.4f);
             characterView.BodyRoot.localRotation = Quaternion.Euler(18f, 0f, 0f);
             characterView.HeadRoot.localRotation = Quaternion.Euler(-18f, 0f, 0f);
+            characterView.HairRoot.localRotation = Quaternion.Euler(12f, 0f, 0f);
             characterView.LeftArmRoot.localRotation = Quaternion.Euler(62f, 0f, -10f);
             characterView.RightArmRoot.localRotation = Quaternion.Euler(62f, 0f, 10f);
             characterView.LeftLegRoot.localRotation = Quaternion.Euler(-58f, 0f, -8f);
@@ -228,6 +231,7 @@ namespace DogaRun.Gameplay.Runner
             characterView.LeftLegRoot.localRotation = Quaternion.Euler(32f * amount, 0f, 0f);
             characterView.RightLegRoot.localRotation = Quaternion.Euler(-24f * amount, 0f, 0f);
             characterView.HeadRoot.localRotation = Quaternion.Euler(12f * amount, 0f, -10f * amount);
+            characterView.HairRoot.localRotation = Quaternion.Euler(-10f * amount, 0f, 8f * amount);
         }
 
         private void ApplyFinalHitLimbs(float amount)
@@ -238,6 +242,7 @@ namespace DogaRun.Gameplay.Runner
             characterView.LeftLegRoot.localRotation = Quaternion.Euler(28f * amount, 0f, -8f * amount);
             characterView.RightLegRoot.localRotation = Quaternion.Euler(-36f * amount, 0f, 10f * amount);
             characterView.HeadRoot.localRotation = Quaternion.Euler(18f * amount, 0f, -14f * amount);
+            characterView.HairRoot.localRotation = Quaternion.Euler(-14f * amount, 0f, 10f * amount);
         }
 
         private void OnDestroy()

@@ -23,7 +23,7 @@
 
 ## Runtime akışı
 
-`GameSceneInstaller` → `GameStateMachine` + `RunSession` → input okuyucuları → `RunnerController`; aynı anda `WorldSequenceController` ve `AnimalObstacleSpawner` dünyayı oyuncuya taşır. `HitStateMachine` çarpışma sayısını ve dokunulmazlığı yönetir. `GameHudPresenter`, oturum ve hit durumunu yalnızca sunar.
+`GameSceneInstaller` → `GameStateMachine` + `RunSession` → input okuyucuları → `RunnerController`; aynı anda `WorldSequenceController` ve `AnimalObstacleSpawner` dünyayı oyuncuya taşır. `ProceduralSunlitForestFactory` havuza girecek görsel şablonu bir kez üretir. `HitStateMachine` çarpışma sayısını ve dokunulmazlığı yönetir. `GameHudPresenter`, oturum ve hit durumunu yalnızca sunar.
 
 ## Genişleme noktaları
 
@@ -35,4 +35,4 @@
 
 ## Performans bütçesi
 
-PHASE 1'de altı world chunk ve sekiz obstacle örneği başlangıçta oluşturulur; oyun döngüsünde Destroy yoktur. Update içindeki koleksiyonlar yeniden kullanılmaktadır. Hedef orta cihazda 60 FPS, düşük cihazda yapılandırılabilir 30 FPS'tir.
+PHASE 1'de altı kapasiteli world chunk havuzu (beşi aktif) ve sekiz obstacle örneği başlangıçta oluşturulur; oyun döngüsünde Destroy yoktur. SunlitForest parçası 84 primitive renderer ve paylaşılan GPU-instancing materyalleri kullanır. Parça başına tek bitki animatörü, ortam için tek yaprak animatörü vardır; Update içindeki koleksiyonlar yeniden kullanılmaktadır. Hedef orta cihazda 60 FPS, düşük cihazda yapılandırılabilir 30 FPS'tir.

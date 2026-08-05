@@ -4,8 +4,9 @@
 
 | Asset | Kaynak | Lisans | Durum |
 |---|---|---|---|
-| Doğa prosedürel karakter rig'i | 42 Unity primitive'i, semantik eklemler ve koddan animasyon | Proje içi özgün | Hazır |
-| Orman chunk placeholder | Unity primitive'leri, koddan | Proje içi özgün | Hazır |
+| Doğa prosedürel karakter rig'i | 49 Unity primitive'i, semantik eklemler, sırt çantası ve koddan animasyon | Proje içi özgün | Hazır |
+| SunlitForest prosedürel chunk seti | 84 düşük maliyetli görsel parça, paylaşılan materyaller ve koddan bitki hareketi | Proje içi özgün | Hazır |
+| SunlitForest ortam yaprakları | 12 primitive, tek sürüklenme bileşeni | Proje içi özgün | Hazır |
 | Hayvan placeholder | Unity primitive'leri, koddan | Proje içi özgün | Hazır |
 | UI | uGUI/TMP, koddan | Proje içi özgün | Hazır |
 

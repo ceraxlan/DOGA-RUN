@@ -32,12 +32,12 @@ Tarih: 2026-08-05
 
 - Temiz import ve tüm C# assembly derlemesi: başarılı, C# warning/error yok.
 - EditMode: **15/15** test vakası geçti.
-- PlayMode: **10/10** test vakası geçti.
-- Toplam: **25/25** test vakası geçti; failed/skipped yok.
+- PlayMode: **11/11** test vakası geçti.
+- Toplam: **26/26** test vakası geçti; failed/skipped yok.
 - Android development APK: başarılı.
   - Çıktı: `Builds/Android/DogaRun-development.apk`
-  - Boyut: 121.53 MB
-  - SHA-256: `3BBA6862BE9CE7390FE50620D5EC4FD79BC32D59AC4947DA695BA1D3A6DAAD6A`
+  - Boyut: 127,467,781 byte (121.56 MiB)
+  - SHA-256: `0DB92FFA0C58B5F2525028EFEF9C4A819C8DC1DAEBE016166EA3A1F556532F82`
   - Package/version: `org.ceraxlan.dogarun`, `0.1.0 (1)`
   - min/target/compile SDK: 26/36/36
   - Native ABI: `arm64-v8a`
