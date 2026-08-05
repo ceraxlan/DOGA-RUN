@@ -1,8 +1,16 @@
 # Changelog
 
+## 0.2.0 — 2026-08-05
+
+- Doğa; çocuk oranlı, sarı kısa/kıvırcık saçlı, mavi gözlü ve renkli spor kıyafetli özgün prosedürel 3D rig ile yenilendi.
+- Koşu, şerit eğimi, zıplama, kayma, ilk/ikinci/final çarpışma prosedürel animasyonları eklendi.
+- Karakter renk paleti ve boyu `CharacterDefinition` üzerinden yapılandırılabilir hale getirildi.
+- Standalone shader stripping ve `CharacterDefinition` script referansı sorunları giderildi.
+- PlayMode test sayısı 10'a çıkarıldı; Android ve Windows runtime doğrulamaları yenilendi.
+
 ## 0.1.0 — 2026-08-04
 
 - Unity 6.3 LTS/URP Android proje iskeleti oluşturuldu.
 - PHASE 1 placeholder oynanabilir dikey dilimi eklendi.
 - EditMode ve PlayMode test kaynakları ile Windows otomasyon scriptleri eklendi.
-- Unity Editor bulunmadığından import/test/build doğrulaması beklemede bırakıldı.
+- İlk oluşturma anında Unity Editor doğrulaması beklemede bırakıldı; 0.2.0 çalışmasında tamamlandı.

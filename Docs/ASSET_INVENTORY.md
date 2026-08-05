@@ -4,14 +4,14 @@
 
 | Asset | Kaynak | Lisans | Durum |
 |---|---|---|---|
-| Doğa placeholder | Unity primitive'leri, koddan | Proje içi özgün | Hazır |
+| Doğa prosedürel karakter rig'i | 42 Unity primitive'i, semantik eklemler ve koddan animasyon | Proje içi özgün | Hazır |
 | Orman chunk placeholder | Unity primitive'leri, koddan | Proje içi özgün | Hazır |
 | Hayvan placeholder | Unity primitive'leri, koddan | Proje içi özgün | Hazır |
 | UI | uGUI/TMP, koddan | Proje içi özgün | Hazır |
 
 ## Sonraki fazlarda gerekenler
 
-- Doğa için stilize 3D model, rig ve 13 animasyon klibi
+- Doğa için üretim kalitesinde stilize 3D model, rig ve 13 animasyon klibi; mevcut prosedürel rig çalışır fallback olarak korunacak
 - Kedi, köpek, aslan, civciv ve tavşan modelleri/animasyonları
 - Sekiz çevre teması için mobil optimize modüler setler
 - Music, ambience, UI, character ve yüzey ayak sesleri (Asphalt/Dirt/Wood/Grass/Rock)

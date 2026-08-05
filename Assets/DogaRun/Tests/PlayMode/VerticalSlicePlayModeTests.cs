@@ -49,6 +49,52 @@ namespace DogaRun.Tests.PlayMode
         }
 
         [UnityTest]
+        public IEnumerator ProceduralDoga_BuildsChildFriendlySemanticRig()
+        {
+            var root = new GameObject("DogaVisualTest");
+            var character = root.AddComponent<ProceduralDogaCharacter>();
+            character.Build();
+
+            Assert.That(character.IsBuilt, Is.True);
+            Assert.That(character.PartCount, Is.GreaterThanOrEqualTo(35));
+            Assert.That(character.HeadRoot, Is.Not.Null);
+            Assert.That(character.LeftArmRoot, Is.Not.Null);
+            Assert.That(character.RightArmRoot, Is.Not.Null);
+            Assert.That(character.LeftLegRoot, Is.Not.Null);
+            Assert.That(character.RightLegRoot, Is.Not.Null);
+            Assert.That(root.transform.Find("DogaRig/Head/Sol Mavi İris"), Is.Not.Null);
+            Assert.That(root.transform.Find("DogaRig/Body/Yaprak Rozeti"), Is.Not.Null);
+
+            Object.Destroy(root);
+            yield return null;
+        }
+
+        [UnityTest]
+        public IEnumerator CharacterAnimation_ProducesRunningLimbMotion()
+        {
+            var root = new GameObject("AnimatedRunner");
+            var controller = root.AddComponent<CharacterController>();
+            controller.height = 1.7f;
+            controller.center = new Vector3(0f, 0.85f, 0f);
+            var runner = root.AddComponent<RunnerController>();
+            runner.Initialize(new GameStateMachine(GameState.Running));
+
+            var visualObject = new GameObject("DogaVisual");
+            visualObject.transform.SetParent(root.transform, false);
+            var character = visualObject.AddComponent<ProceduralDogaCharacter>();
+            character.Build();
+            var animationController = root.AddComponent<CharacterAnimationController>();
+            animationController.Initialize(character, runner, new HitStateMachine());
+            var initialRotation = character.LeftArmRoot.localRotation;
+
+            yield return new WaitForSeconds(0.15f);
+
+            Assert.That(Quaternion.Angle(initialRotation, character.LeftArmRoot.localRotation), Is.GreaterThan(1f));
+            Object.Destroy(root);
+            yield return null;
+        }
+
+        [UnityTest]
         public IEnumerator AnimalObstacle_ConsumesColliderHitOnce()
         {
             var hitMachine = new HitStateMachine();

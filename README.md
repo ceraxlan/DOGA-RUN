@@ -4,9 +4,9 @@ Doğa Koşusu, Android telefonlar için portre modunda çalışan, özgün ve ç
 
 ## Mevcut kapsam
 
-PHASE 0 ve PHASE 1 için kod tabanlı, asset bağımsız bir dikey dilim hazırlanmıştır: üç şerit, klavye/swipe kontrolü, zıplama, kayma, havuzlanan orman parçaları ve hayvan engelleri, üç çarpışma akışı, süre/skor HUD'u, pause, game over ve yeniden başlatma.
+PHASE 0 ve PHASE 1 dikey dilimine ek olarak PHASE 5'in karakter alt-kapsamı uygulanmıştır: üç şerit, klavye/swipe kontrolü, zıplama, kayma, havuzlanan orman parçaları ve hayvan engelleri, üç çarpışma akışı, süre/skor HUD'u, pause, game over ve yeniden başlatmanın yanında özgün prosedürel Doğa karakteri ve koşu animasyonları bulunur.
 
-Unity Editor bu makinede bulunamadığından import, derleme ve testler henüz Editor içinde doğrulanmamıştır. Kurulum ve ilk açılış adımları için `MANUAL_STEPS.md` dosyasına bakın.
+Proje Unity 6000.3.21f1 ile doğrulanmıştır. EditMode ve PlayMode testleri geçer; Android ARM64 development APK ve Windows runtime smoke build'i başarıyla üretilir. Yerel kurulum ve kalan yayın adımları için `MANUAL_STEPS.md` dosyasına bakın.
 
 ## Gereksinimler
 

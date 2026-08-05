@@ -163,3 +163,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b34dfab7360a4a219b498192bab66123, type: 3}
   m_Name:
   m_EditorClassIdentifier: DogaRun.UI::DogaRun.UI.GameSceneInstaller
+  characterDefinition: {fileID: 11400000, guid: f94cbbd1b4ec2374fa9956a1cb37e8f4, type: 2}

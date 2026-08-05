@@ -1,6 +1,6 @@
 # Doğa Koşusu proje planı
 
-Durum tarihi: 2026-08-05. Unity 6000.3.21f1 import/compile, otomatik testler, Android development APK ve Windows runtime smoke doğrulaması tamamlandı.
+Durum tarihi: 2026-08-05. Unity 6000.3.21f1 import/compile, otomatik testler, Android development APK, Windows runtime smoke ve PHASE 5 prosedürel Doğa karakter alt-kapsamı tamamlandı.
 
 ## PHASE 0 — Repository ve Unity başlangıcı
 
@@ -83,6 +83,9 @@ Durum tarihi: 2026-08-05. Unity 6000.3.21f1 import/compile, otomatik testler, An
 
 ## PHASE 5 — Görsel ve ses iyileştirmesi
 
+- [x] Özgün prosedürel Doğa karakter rig'i
+- [x] Koşu/jump/slide/lane/hit prosedürel animasyonları
+- [x] CharacterDefinition renk ve boy yapılandırması
 - [ ] Gerçek Doğa modelini bağlamak için import pipeline
 - [ ] Animator Controller
 - [ ] Animal models

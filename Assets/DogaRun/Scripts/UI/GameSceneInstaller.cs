@@ -22,6 +22,7 @@ namespace DogaRun.UI
         private static readonly Color WarmYellow = new Color(1f, 0.76f, 0.2f);
         private static readonly Color SkyBlue = new Color(0.42f, 0.76f, 0.9f);
         private static readonly Color Coral = new Color(0.95f, 0.35f, 0.27f);
+        [SerializeField] private CharacterDefinition characterDefinition;
         private KeyboardInputReader keyboardInput;
         private GameLoopController gameLoop;
 
@@ -74,25 +75,16 @@ namespace DogaRun.UI
             controller.stepOffset = 0.2f;
             controller.skinWidth = 0.04f;
 
-            var visualRoot = new GameObject("DogaVisual_Placeholder").transform;
-            visualRoot.SetParent(runnerObject.transform, false);
-
-            var shirt = CreatePrimitive("Turkuaz Spor Üst", PrimitiveType.Capsule, visualRoot, new Vector3(0f, 0.83f, 0f), new Vector3(0.52f, 0.58f, 0.4f), new Color(0.08f, 0.68f, 0.72f));
-            shirt.transform.localRotation = Quaternion.identity;
-            CreatePrimitive("Kafa", PrimitiveType.Sphere, visualRoot, new Vector3(0f, 1.62f, 0f), Vector3.one * 0.68f, new Color(1f, 0.76f, 0.58f));
-            CreatePrimitive("Sarı Saç", PrimitiveType.Sphere, visualRoot, new Vector3(0f, 1.83f, -0.02f), new Vector3(0.72f, 0.38f, 0.7f), WarmYellow);
-            CreatePrimitive("Sol Saç Buklesi", PrimitiveType.Sphere, visualRoot, new Vector3(-0.28f, 1.62f, 0f), Vector3.one * 0.22f, WarmYellow);
-            CreatePrimitive("Sağ Saç Buklesi", PrimitiveType.Sphere, visualRoot, new Vector3(0.28f, 1.62f, 0f), Vector3.one * 0.22f, WarmYellow);
-            CreatePrimitive("Sol Göz", PrimitiveType.Sphere, visualRoot, new Vector3(-0.13f, 1.68f, 0.31f), Vector3.one * 0.09f, new Color(0.12f, 0.46f, 0.9f));
-            CreatePrimitive("Sağ Göz", PrimitiveType.Sphere, visualRoot, new Vector3(0.13f, 1.68f, 0.31f), Vector3.one * 0.09f, new Color(0.12f, 0.46f, 0.9f));
-            CreatePrimitive("Sol Bacak", PrimitiveType.Capsule, visualRoot, new Vector3(-0.16f, 0.27f, 0f), new Vector3(0.18f, 0.28f, 0.2f), Coral);
-            CreatePrimitive("Sağ Bacak", PrimitiveType.Capsule, visualRoot, new Vector3(0.16f, 0.27f, 0f), new Vector3(0.18f, 0.28f, 0.2f), Coral);
+            var visualObject = new GameObject("DogaVisual_Procedural");
+            visualObject.transform.SetParent(runnerObject.transform, false);
+            var characterView = visualObject.AddComponent<ProceduralDogaCharacter>();
+            characterView.Build(characterDefinition);
 
             var runner = runnerObject.AddComponent<RunnerController>();
             runner.Initialize(stateMachine);
             runner.Configure(2.4f, 2f, 0.75f);
             animationController = runnerObject.AddComponent<CharacterAnimationController>();
-            animationController.Initialize(visualRoot, hitStateMachine);
+            animationController.Initialize(characterView, runner, hitStateMachine);
             return runner;
         }
 

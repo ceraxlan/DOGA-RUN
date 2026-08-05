@@ -6,7 +6,9 @@ Sıcak, yumuşak kenarlı, stilize 3D animasyon filmi estetiği; canlı fakat yo
 
 ## Doğa karakteri
 
-Yaklaşık üç yaş görünümünde, yaşına uygun oranlarda, küçük ve stilize bir çocuk karakteridir. Sarı hafif kısa/kıvırcık saç, mavi göz, spor ve renkli kıyafet ana işaretlerdir. PHASE 1 modelinin tamamı Unity primitive'lerinden çalışma anında oluşturulan placeholderdır. Renderer/model bağlantısı `CharacterDefinition` üzerinden değiştirilebilir.
+Yaklaşık üç yaş görünümünde, yaşına uygun oranlarda, küçük ve stilize bir çocuk karakteridir. Büyük ve yumuşak yüz formu, sarı kısa/kıvırcık saç, katmanlı mavi gözler, pembe yanaklar, turkuaz spor üst, mercan şort ve sarı ayakkabılar ana işaretlerdir. Sırtındaki yeşil yaprak rozeti üçüncü şahıs kamerada özgün ve okunabilir bir işaret oluşturur.
+
+PHASE 5 prosedürel modelinde 42 düşük maliyetli primitive renderer; `Body`, `Head`, sol/sağ kol ve sol/sağ bacak semantik eklemlerine bağlanır. Koşu, şerit eğimi, zıplama, kayma ve çocuk dostu çarpışma tepkileri bu eklemler üzerinden çalışır. Boy ve ana renk paleti `CharacterDefinition` içindedir. Bu hiyerarşi üretim modeline geçişte gameplay kodunu değiştirmeden bir prefab/rig adaptörü bağlanabilecek şekilde ayrılmıştır.
 
 ## Çevre
 
